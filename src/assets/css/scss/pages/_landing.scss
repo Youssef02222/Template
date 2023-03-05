@@ -1,0 +1,60 @@
+.Landing {
+  @extend %fCenter;
+  min-height: calc(100vh - var(--header-height));
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    @include overlay($sectionBackground, 1);
+    transform: skewY(-6deg);
+    transform-origin: top left;
+    z-index: -1;
+  }
+  .container {
+    @extend %twoColG;
+    align-items: center;
+    padding-bottom: 7.5rem;
+    @include in(toSmall) {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+    }
+    > img {
+      animation: upDown 5s linear infinite alternate;
+      @include in(toSmall) {
+        display: none;
+      }
+    }
+    > a {
+      @extend %hPCenter;
+      @extend %transition;
+      z-index: 1;
+      color: var(--main-color);
+      position: absolute;
+      bottom: 2rem;
+      &:hover {
+        color: var(--alt-color);
+      }
+      i {
+        animation: bouncing 1.5s infinite;
+      }
+    }
+  }
+  h1 {
+    font-size: 2.5rem;
+    letter-spacing: -0.125rem;
+    @include in(toSmall) {
+      font-size: 1.875rem;
+      margin-bottom: 1rem;
+    }
+  }
+  p {
+    margin: 0.03125rem 0 0;
+    max-width: 31.25rem;
+    line-height: 1.7;
+    font-size: 1.4375rem;
+    @include in(toSmall) {
+      font-size: 1rem;
+    }
+  }
+}

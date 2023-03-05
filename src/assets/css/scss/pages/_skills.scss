@@ -1,0 +1,37 @@
+.Skills {
+  .container {
+    @extend %twoColG;
+    @include in {
+      grid-template-columns: 1fr;
+      img {
+        display: none;
+      }
+    }
+  }
+  .skills-box {
+    h3 {
+      @extend %fSpacer;
+      margin-bottom: 1rem;
+      span {
+        padding: 0.125rem 0.25rem;
+        font-size: 0.75rem;
+        background-color: var(--background-color);
+        color: var(--main-color);
+        border: 0.0625rem solid var(--section-background);
+        border-radius: 0.25rem;
+      }
+    }
+    .the-prog {
+      height: 1.875rem;
+      background-color: #eee;
+      margin: 0.25rem 0 1.5rem;
+      span.prog {
+        @extend %transition;
+        background-color: var(--main-color);
+        display: block;
+        height: 100%;
+        width: var(--width);
+      }
+    }
+  }
+}

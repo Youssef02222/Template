@@ -1,0 +1,131 @@
+header {
+  position: relative;
+  @extend %mainBoxShadow;
+  .container {
+    @extend %fSpacer;
+    position: relative;
+    @include in {
+      flex-direction: column;
+    }
+  }
+  .logo {
+    @extend %fCenter;
+    @extend %bold;
+    font-size: 1.625rem;
+    height: var(--header-height);
+    color: var(--main-color);
+    @include in {
+      height: 3.125rem;
+    }
+  }
+  nav {
+    color: var(--headings-color);
+    > ul {
+      @extend %ulRest;
+      display: flex;
+      > li {
+        > a {
+          @extend %fCenter;
+          @extend %transition;
+          position: relative;
+          height: var(--header-height);
+          padding: 0rem 1.875rem;
+          font-size: 1.125rem;
+          @include in {
+            padding: 0rem 0.625rem;
+            font-size: 0.875rem;
+            height: calc(var(--header-height) - 2rem);
+          }
+          &:after {
+            @extend %transition;
+            @include line(var(--main-color), 0.25rem, top, 0%);
+            left: 0;
+          }
+        }
+        > a:hover,
+        > a:focus,
+        &.active > a {
+          color: var(--main-color);
+          background-color: rgba($sectionBackground, 0.3);
+          &:after {
+            width: 100%;
+          }
+        }
+        &:last-of-type {
+          &:hover,
+          &:focus,
+          &.active {
+            .magaMenu {
+              top: calc(100% + 0.0625rem);
+              z-index: 100;
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+  .magaMenu {
+    @extend %transition;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: calc(100% + 3.125rem);
+    z-index: -1;
+    opacity: 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2.5rem;
+    background-color: var(--background-color);
+    color: var(--main-color);
+    padding: 1.875rem;
+    @include in(toSmall) {
+      grid-template-columns: 1fr 1fr;
+      img {
+        display: none;
+      }
+    }
+    @include in {
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding: 0;
+      > ul:not(:last-of-type) li:last-of-type a {
+        border-bottom: 0.0625rem solid #e9e6e6;
+      }
+    }
+    &:after {
+      @include line(var(--main-color), 0.1875rem);
+      z-index: -1;
+    }
+    ul {
+      min-width: 250px;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      @extend %bold;
+      @extend %fCenterS;
+      gap: 0.625rem;
+      padding: 1rem;
+      font-size: 1.125rem;
+      position: relative;
+      &:after {
+        @extend %transition;
+        @include line(rgba($sectionBackground, 0.3), 100%);
+        left: 0;
+        width: 0%;
+        z-index: -1;
+      }
+      &:hover {
+        &:after {
+          width: 100%;
+        }
+      }
+    }
+    li:not(:last-of-type) {
+      a {
+        border-bottom: 0.0625rem solid #e9e6e6;
+      }
+    }
+  }
+}

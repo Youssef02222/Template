@@ -1,0 +1,8 @@
+section.Stats#Stats
+  h2=Stats.title
+  .container
+    each stat in Stats.statsList
+      .stat
+        i(class=stat.icon)
+        span.number(data-goal=stat.number)= "0"
+        span.title= stat.title

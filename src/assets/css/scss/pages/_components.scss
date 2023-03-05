@@ -1,0 +1,46 @@
+.special-head {
+  @extend %transition;
+  text-transform: uppercase;
+  width: fit-content;
+  margin: 0 auto 5rem;
+  border: 0.15rem solid var(--headings-color);
+  position: relative;
+  z-index: 1;
+  padding: 0.625rem 1.25rem;
+  font-size: 1.875rem;
+  cursor: default;
+  @include in {
+    font-size: 1.5rem;
+  }
+  &:hover {
+    border-color: $white;
+    color: $white;
+    &::before {
+      left: 0;
+    }
+    &::after {
+      right: 0;
+    }
+    &::after,
+    &::before {
+      height: 100%;
+      width: 50%;
+      border-radius: 0;
+    }
+  }
+  &::after,
+  &::before {
+    @extend %transition;
+    @extend %vPCenter;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    @include circle(0.75rem, 0, transparent, var(--main-color));
+  }
+  &::after {
+    right: -2rem;
+  }
+  &::before {
+    left: -2rem;
+  }
+}

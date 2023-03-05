@@ -1,0 +1,10 @@
+section.Features#Features
+  +specialHead(siteNav[2])
+  .container
+    each feat in Features
+      .feature
+        .image: img(src=imgsPath + feat.imgName, alt="")
+        .content 
+          h3 #{feat.title}
+          p #{feat.text}
+        a(href=feat.link) More 

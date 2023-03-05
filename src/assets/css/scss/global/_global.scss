@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap");
+*,
+:after,
+:before {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  margin: 0;
+}
+:root {
+  --main-color: #{$mainColor};
+  --alt-color: #{$altColor};
+  --text-color: #{$textColor};
+  --alt-text-color: #{$altTextColor};
+  --background-color: #{$backgroundColor};
+  --alt-background-color: #{$altBackgroundColor};
+  --section-background: #{$sectionBackground};
+  --headings-color: #{$headingsColor};
+  --alt-headings-color: #{$altHeadingsColor};
+  --main-transition: #{$mainTransition};
+  --header-height: #{$headerHeight};
+  --main-padding-top: #{$sectionPadding};
+  --main-padding-bottom: #{$sectionPadding};
+  --font-family: #{$fontFamily};
+  --main-font: #{$mainFont};
+  --main-font-size: #{$mainFontSize};
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  line-height: 1.15;
+  font-family: var(--font-family);
+  font-size: var(--main-font-size);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.container {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  padding: {
+    left: 1rem;
+    right: 1rem;
+  }
+  @include madiaContainer;
+}
+%font {
+  font-family: var(--main-font);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--headings-color);
+  @extend %font;
+}
+button {
+  @extend %buttonRest;
+  @extend %font;
+  cursor: pointer;
+}
+img {
+  max-width: 100%;
+}
+a {
+  @include aRest;
+}
+ul {
+  @extend %ulRest;
+}

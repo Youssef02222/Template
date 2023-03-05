@@ -1,0 +1,60 @@
+.Work-Steps {
+  @extend %sectionBackground;
+  .container {
+    @extend %twoColG;
+    gap: 1rem;
+    @include in(toSmall) {
+      grid-template-columns: 1fr;
+    }
+  }
+  .steps-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-left: 0.125rem;
+  }
+  .step-box {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    background-color: #f6f5f5;
+    border: 0.125rem solid white;
+    padding: 1.875rem;
+    border-radius: 0.25rem;
+    gap: 1.875rem;
+    line-height: 1.5;
+    font-size: 1.125rem;
+    align-items: center;
+    @include in(toSmall) {
+      justify-items: center;
+      grid-template-columns: 1fr;
+      gap: 0.875rem;
+      font-size: 0.875rem;
+      img {
+        max-width: 3.5rem;
+      }
+    }
+    &::before {
+      @extend %aCenter;
+      @extend %transition;
+      content: "";
+      width: 0%;
+      height: 0%;
+      z-index: 0;
+      background-color: #ededed;
+    }
+    &:hover {
+      &::before {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &,
+    img,
+    .content {
+      position: relative;
+    }
+  }
+  h3 {
+    margin-bottom: 0.5rem;
+  }
+}

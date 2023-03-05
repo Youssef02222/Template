@@ -1,0 +1,132 @@
+.Pricing {
+  @extend %sectionBackground;
+  position: relative;
+  > img {
+    @extend %dotedBackground;
+  }
+}
+.plans {
+  @include responGridCol(22.375rem, 2rem);
+  text-align: center;
+  min-height: 45rem;
+  align-items: end;
+  @include in {
+    grid-template-columns: 1fr;
+  }
+  .plan {
+    @extend %mainBoxShadow;
+    background-color: var(--background-color);
+    position: relative;
+    &.special-plan {
+      align-self: flex-start;
+      .special-plan-title {
+        @extend %bold;
+        @extend %fCenter;
+        @extend %primaryButton;
+        $specialWidth: 2.25rem;
+        position: absolute;
+        right: 2rem;
+        top: 0;
+        font-size: 1.125rem;
+        width: $specialWidth;
+        padding-top: 1rem;
+        writing-mode: vertical-rl;
+        &::before {
+          @include triangleArrow(
+            $specialWidth / 2,
+            var(--main-color),
+            bottom,
+            center
+          );
+        }
+      }
+    }
+    &:hover {
+      &:after,
+      &:before {
+        width: 100%;
+      }
+    }
+    &:before {
+      left: 0;
+      top: 0;
+    }
+    &:after {
+      bottom: 0;
+      right: 0;
+    }
+    &:after,
+    &:before {
+      @extend %transition;
+      content: "";
+      height: 50%;
+      width: 0%;
+      background-color: #f3f3f3a8;
+      position: absolute;
+      z-index: 0;
+    }
+  }
+  .plan-head {
+    @extend %fColC;
+    @extend %z1;
+    color: var(--main-color);
+    border-bottom: 0.0625rem solid var(--section-background);
+    padding: 2rem 1.25rem;
+    gap: 2rem;
+    img {
+      max-width: 5rem;
+    }
+    h3 {
+      font-size: 1.5rem;
+    }
+    .price {
+      @extend %bold;
+      position: relative;
+      font-size: 3.5rem;
+      &::before {
+        content: attr(data-currency);
+      }
+      &::after {
+        content: attr(data-every);
+        @extend %fCenter;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #777;
+      }
+    }
+  }
+  .plan-features {
+    @extend %z1;
+    li {
+      text-align: start;
+      padding: 1rem;
+      &:not(:last-of-type) {
+        border-bottom: 0.0625rem solid var(--section-background);
+      }
+      &::before {
+        content: var(--icon);
+        font-family: "Font Awesome 6 Pro";
+        font-weight: 900;
+        padding-right: 1rem;
+        color: var(--main-color);
+      }
+    }
+  }
+  .plan-footer {
+    @extend %z1;
+    color: var(--main-color);
+    a {
+      @extend %transition;
+      @extend %bold;
+      display: block;
+      width: fit-content;
+      padding: 1rem 1.25rem;
+      margin: 2rem auto;
+      border: 0.125rem solid var(--main-color);
+      border-radius: 0.3125rem;
+      &:hover {
+        @extend %primaryButton;
+      }
+    }
+  }
+}

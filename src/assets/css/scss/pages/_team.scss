@@ -1,0 +1,92 @@
+.Team {
+  .container {
+    @include responGridCol(18.75rem, 2.5rem);
+    @include in {
+      grid-template-columns: 1fr;
+    }
+  }
+  .top {
+    @extend %fCenterE;
+    padding-top: $boxSpeaser;
+    background-color: #f3f3f3;
+    margin-left: auto;
+    border-radius: $boxBorder $boxBorder 0 0;
+    position: relative;
+    width: calc(100% - #{$boxSpeaser});
+    @include in {
+      padding-top: 1rem;
+      width: 100%;
+    }
+    img {
+      @include in {
+        max-width: calc(100% - #{$boxSpeaser + 1});
+      }
+      @extend %transition;
+      border-radius: $boxBorder;
+      position: relative;
+    }
+  }
+  .social {
+    @extend %fCenter;
+    position: relative;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 4rem;
+    a {
+      @extend %transition;
+      @extend %fCenter;
+      width: 100%;
+      min-height: 2.5rem;
+      &:hover {
+        color: var(--main-color);
+      }
+    }
+  }
+  .top::before,
+  .content::before {
+    @extend %transition;
+    content: "";
+    @include overlay(#3f4b56, 0.1, 0%);
+    z-index: 0;
+    border-radius: $boxBorder $boxBorder 0 0;
+  }
+  .content {
+    position: relative;
+    background-color: #f3f3f3;
+    padding: 1rem;
+    margin-left: $boxSpeaser;
+    @include in {
+      margin-left: 0;
+      text-align: start;
+    }
+    border-radius: 0 0 $boxBorder $boxBorder;
+    &::before {
+      border-radius: 0 0 $boxBorder $boxBorder;
+    }
+  }
+  h3 {
+    @extend %transition;
+    position: relative;
+    color: var(--main-color);
+    font-size: 22px;
+  }
+  p {
+    position: relative;
+    margin-top: 0.625rem;
+    margin-bottom: 0.625rem;
+  }
+  .member-box {
+    &:hover {
+      img {
+        filter: grayscale(100%);
+      }
+      .top::before,
+      .content::before {
+        width: 100%;
+      }
+      h3 {
+        color: #777;
+      }
+    }
+  }
+}
